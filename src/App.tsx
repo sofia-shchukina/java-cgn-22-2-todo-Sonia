@@ -3,6 +3,7 @@ import './App.css';
 import {Todo} from "./model/Todo";
 import BoardOverview from "./components/BoardOverview";
 import axios from "axios";
+import AddTodo from "./components/AddTodo";
 
 function App() {
 
@@ -18,9 +19,20 @@ function App() {
           .then(setTodos)
   }
 
+  const addTodo = (description: string) => {
+      const newTodo = {
+          description: description,
+          status: "OPEN"
+      }
+
+      axios.post("/api/todo", newTodo)
+          .then(getAllTodo)
+  }
+
   return (
     <div>
         <BoardOverview todos={todos}/>
+        <AddTodo  addTodo={addTodo}/>
     </div>
   );
 }
