@@ -11,8 +11,8 @@ export default function TodoCard(props: TodoCardProps) {
     return (
         <div>
             {props.todo.description}
-            <button onClick={() => props.advanceTodo(props.todo)}>Advance</button>
-            <button onClick={() => props.deleteTodo(props.todo.id)}>Delete</button>
+            {props.todo.status !== "DONE" && <button onClick={() => props.advanceTodo(props.todo)}>Advance</button>}
+            {props.todo.status === "DONE" && <button onClick={() => props.deleteTodo(props.todo.id)}>Delete</button>}
         </div>
     )
 }

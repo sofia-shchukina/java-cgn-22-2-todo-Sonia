@@ -1,5 +1,4 @@
 import {Todo} from "../model/Todo";
-import TodoCard from "./TodoCard";
 import Board from "./Board";
 
 
