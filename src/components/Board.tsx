@@ -3,14 +3,15 @@ import TodoCard from "./TodoCard";
 
 
 type BoardProps = {
-    todos: Todo[]
+    todos: Todo[],
+    advanceTodo: (todo: Todo) => void
 }
 
 export default function Board(props: BoardProps) {
 
     return (
         <div>
-            {props.todos.map((currentTodo) => <TodoCard todo={currentTodo} />)}
+            {props.todos.map((currentTodo) => <TodoCard todo={currentTodo} advanceTodo={props.advanceTodo}/>)}
         </div>
     )
 }

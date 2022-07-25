@@ -4,6 +4,7 @@ import {Todo} from "./model/Todo";
 import BoardOverview from "./components/BoardOverview";
 import axios from "axios";
 import AddTodo from "./components/AddTodo";
+import {getNextStatus} from "./service/todo-service";
 
 function App() {
 
@@ -29,10 +30,21 @@ function App() {
           .then(getAllTodo)
   }
 
+  const advanceTodo = (todo: Todo) => {
+      const updatedTodo = {
+          id: todo.id,
+          description: todo.description,
+          status: getNextStatus(todo.status)
+      }
+
+      axios.put(`/api/todo/${todo.id}`, updatedTodo)
+          .then(getAllTodo)
+  }
+
   return (
     <div>
-        <BoardOverview todos={todos}/>
-        <AddTodo  addTodo={addTodo}/>
+        <BoardOverview todos={todos} advanceTodo={advanceTodo}/>
+        <AddTodo addTodo={addTodo}/>
     </div>
   );
 }
