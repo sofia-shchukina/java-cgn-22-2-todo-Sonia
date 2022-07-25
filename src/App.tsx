@@ -41,9 +41,14 @@ function App() {
           .then(getAllTodo)
   }
 
+  const deleteTodo = (id: string) => {
+      axios.delete(`/api/todo/${id}`)
+          .then(getAllTodo)
+  }
+
   return (
     <div>
-        <BoardOverview todos={todos} advanceTodo={advanceTodo}/>
+        <BoardOverview todos={todos} advanceTodo={advanceTodo} deleteTodo={deleteTodo}/>
         <AddTodo addTodo={addTodo}/>
     </div>
   );
