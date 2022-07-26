@@ -1,7 +1,8 @@
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, FormEvent, useState} from "react";
+import {Todo} from "../model/Todo";
 
 type AddTodoProps = {
-    addTodo: (description: string) => void
+    addTodo: (description: string) => Promise<Todo>
 }
 
 export default function AddTodo(props: AddTodoProps) {
@@ -12,10 +13,23 @@ export default function AddTodo(props: AddTodoProps) {
         setDescription(event.target.value)
     }
 
+    const onTodoSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+
+        if (!description) {
+            console.error("Description must not be empty")
+            return
+        }
+
+        props.addTodo(description)
+            .then(() => setDescription(""))
+            .catch(console.error)
+    }
+
     return (
-        <div>
+        <form onSubmit={onTodoSubmit}>
             <input onChange={onDescriptionChange} value={description}/>
-            <button onClick={() => props.addTodo(description)}>Add</button>
-        </div>
+            <button>Add</button>
+        </form>
     )
 }

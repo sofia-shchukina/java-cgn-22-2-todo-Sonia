@@ -23,8 +23,11 @@ export default function useTodos() {
             status: "OPEN"
         }
 
-        axios.post("/api/todo", newTodo)
-            .then(getAllTodo)
+        return axios.post<Todo>("/api/todo", newTodo)
+            .then((response) => {
+                getAllTodo()
+                return response.data
+            })
     }
 
     const advanceTodo = (todo: Todo) => {
