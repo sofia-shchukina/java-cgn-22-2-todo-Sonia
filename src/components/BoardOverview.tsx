@@ -3,6 +3,7 @@ import Board from "./Board";
 
 
 type BoardOverviewProps = {
+
     todos: Todo[],
     advanceTodo: (todo: Todo) => void,
     deleteTodo: (id: string) => void
