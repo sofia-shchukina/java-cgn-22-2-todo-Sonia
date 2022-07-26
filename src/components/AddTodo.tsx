@@ -1,5 +1,6 @@
 import {ChangeEvent, FormEvent, useState} from "react";
 import {Todo} from "../model/Todo";
+import "./AddTodo.css"
 
 type AddTodoProps = {
     addTodo: (description: string) => Promise<Todo>
@@ -27,7 +28,7 @@ export default function AddTodo(props: AddTodoProps) {
     }
 
     return (
-        <form onSubmit={onTodoSubmit}>
+        <form className="form" onSubmit={onTodoSubmit}>
             <input onChange={onDescriptionChange} value={description}/>
             <button>Add</button>
         </form>

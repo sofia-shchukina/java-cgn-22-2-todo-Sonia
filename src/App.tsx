@@ -7,14 +7,17 @@ import {HashRouter, Route, Routes} from "react-router-dom";
 import BoardPage from "./components/BoardPage";
 import NavigationBar from "./components/NavigationBar";
 
+
 function App() {
 
     const {todos, addTodo, advanceTodo, deleteTodo} = useTodos()
 
     return (
+
         <HashRouter>
             <h1>Super Todo App with Routes</h1>
             <NavigationBar/>
+            <AddTodo addTodo={addTodo}/>
             <Routes>
                 <Route path={"/"}
                        element={<BoardOverview
@@ -43,7 +46,7 @@ function App() {
                 />
                 }/>
             </Routes>
-            <AddTodo addTodo={addTodo}/>
+
         </HashRouter>
 
     );

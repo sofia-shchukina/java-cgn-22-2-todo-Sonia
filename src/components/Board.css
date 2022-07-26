@@ -1,0 +1,31 @@
+.board {
+    background-color: white;
+    width: 400px;
+}
+
+.boardTitle {
+    color: #84685d;
+    text-align: center;
+    font-size: 25px;
+}
+
+.board:nth-of-type(even) {
+    background-color: #f6ded5;
+}
+
+.cardElements {
+    min-height: 70vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: space-evenly;
+    gap: 10px;
+    text-align: center;
+}
+
+.LonelyBoard .board {
+    width: 70vw;
+    margin-left: 15vw;
+    margin-right: 15vw;
+}

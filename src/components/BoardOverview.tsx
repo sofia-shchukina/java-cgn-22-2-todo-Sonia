@@ -1,5 +1,6 @@
 import {Todo} from "../model/Todo";
 import Board from "./Board";
+import "./BoardOverwiew.css"
 
 
 type BoardOverviewProps = {
@@ -16,7 +17,7 @@ export default function BoardOverview(props: BoardOverviewProps) {
     const doneTodos: Todo[] = props.todos.filter((currentTodo) => currentTodo.status === "DONE")
 
     return (
-        <div>
+        <div className="boards">
             <Board title="Open" todos={openTodos} advanceTodo={props.advanceTodo} deleteTodo={props.deleteTodo}/>
             <Board title={"In Progress"} todos={inProgressTodos} advanceTodo={props.advanceTodo} deleteTodo={props.deleteTodo}/>
             <Board title={"Done"} todos={doneTodos} advanceTodo={props.advanceTodo} deleteTodo={props.deleteTodo}/>
